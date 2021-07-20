@@ -1,6 +1,6 @@
 ## Welcome to the Open Science Grid
 
-This repository contains the source code of the Open Science Grid website; it is not the public facing site.
+This repository contains the souce code of the Open Science Grid website; it is not the public facing site.
 
 The real webpage for the OSG is <https://www.opensciencegrid.org>.
 
