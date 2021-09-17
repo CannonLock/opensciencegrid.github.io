@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>How to Transfer 460 Terabytes? A File Transfer Case Study | Open Science Grid</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="How to Transfer 460 Terabytes? A File Transfer Case Study" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="When Greg Daues at the National Center for Supercomputing Applications (NCSA) needed to transfer 460 Terabytes of NCSA files from the National Institute of Nuclear and Particle Physics (IN2P3) in Lyon, France to Urbana, Illinois, for a project they were working with FNAL, CC-IN2P3 and the Rubin Data Production team, he turned to the HTCondor High Throughput system, not to run computationally intensive jobs, as many do, but to manage the hundreds of thousands of I/O bound transfers." />
+<meta property="og:description" content="When Greg Daues at the National Center for Supercomputing Applications (NCSA) needed to transfer 460 Terabytes of NCSA files from the National Institute of Nuclear and Particle Physics (IN2P3) in Lyon, France to Urbana, Illinois, for a project they were working with FNAL, CC-IN2P3 and the Rubin Data Production team, he turned to the HTCondor High Throughput system, not to run computationally intensive jobs, as many do, but to manage the hundreds of thousands of I/O bound transfers." />
+<meta property="og:site_name" content="Open Science Grid" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-15T12:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to Transfer 460 Terabytes? A File Transfer Case Study" />
+<script type="application/ld+json">
+{"description":"When Greg Daues at the National Center for Supercomputing Applications (NCSA) needed to transfer 460 Terabytes of NCSA files from the National Institute of Nuclear and Particle Physics (IN2P3) in Lyon, France to Urbana, Illinois, for a project they were working with FNAL, CC-IN2P3 and the Rubin Data Production team, he turned to the HTCondor High Throughput system, not to run computationally intensive jobs, as many do, but to manage the hundreds of thousands of I/O bound transfers.","url":"/news/2021/01/15/Using-HTCondor-For-Large-File-Transfer.html","@type":"BlogPosting","datePublished":"2021-01-15T12:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/news/2021/01/15/Using-HTCondor-For-Large-File-Transfer.html"},"headline":"How to Transfer 460 Terabytes? A File Transfer Case Study","dateModified":"2021-01-15T12:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/assets/js/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="/assets/js/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="/assets/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"><img src="/assets/images/osglogo.png" alt="Open Science Grid logo"> Open Science Grid</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  About
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/about/introduction">Introduction</a>
+                  <a class="dropdown-item" href="/about/open_science_pool/">Open Science Pool</a>
+                  <a class="dropdown-item" href="/about/computation/">Computation on the OSG</a>
+                  <a class="dropdown-item" href="/about/organization/">Organization</a>
+                  <a class="dropdown-item" href="/about/team">Team</a>
+                  <a class="dropdown-item" href="/about/publications">Publications</a>
+                </div>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/campus-cyberinfrastructure">CC*</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/news">News</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Docs
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                  <a class="dropdown-item" href="https://support.opensciencegrid.org/support/home">For Users</a>
+                  <a class="dropdown-item" href="https://opensciencegrid.org/docs/">For Sysadmins</a>
+                  <a class="dropdown-item" href="https://opensciencegrid.org/security/">Security</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- End Container -->
+      </nav>
+    </header>
+
+      <div class="container">
+        <main>
+          <section>
+  
+  <div class="title-head">
+    <h1> How to Transfer 460 Terabytes? A File Transfer Case Study</h1>
+  
+  </div> <!-- title-head -->
+  
+
+
+  <p>When Greg Daues at the <a href="https://resources.istcoalition.org/national-center-for-supercomputing-applications" target="_blank">National Center for Supercomputing Applications (NCSA)</a> needed to transfer 460 Terabytes of NCSA files from <a href="https://in2p3.cnrs.fr/en/node/11" target="_blank">the National Institute of Nuclear and Particle Physics (IN2P3)</a> in Lyon, France to Urbana, Illinois, for a project they were working with <a href="https://www.fnal.gov/" target="_blank">FNAL</a>, <a href="https://cc.in2p3.fr/en/" target="_blank">CC-IN2P3</a> and the <a href="https://www.lsst.org/" target="_blank">Rubin Data Production team</a>, he turned to the <a href="https://research.cs.wisc.edu/htcondor/" target="_blank">HTCondor High Throughput system</a>, not to run computationally intensive jobs, as many do, but to manage the hundreds of thousands of I/O bound transfers.</p>
+
+<h2>The Data</h2>
+
+<p>IN2P3 made the data available via https, but the number of files and their total size made the management of the transfer an engineering challenge.  There were two kinds of files to be transferred, with 3.5 million files with a median size of roughly 100 Mb, and another 3.5 million smaller files, with a median size of about 10 megabytes.  Total transfer size is roughly 460 Terabytes.</p>
+
+<h2>The Requirements</h2>
+
+<p>The requirement for this transfer was to reliably transfer all the files in a reasonably performant way, minimizing the human time to set up, run, and manage the transfer.  Note the noni-goal of optimizing for the fastest possible transfer time – reliability and minimizing the human effort take priority here.  Reliability, in this context implies:</p>
+
+<p>Failed transfers are identified and re-run (with millions of files, a failed transfer is almost inevitable)
+Every file will get transferred
+The operation will not overload the sender, the receiver, or any network in between</p>
+
+<h2>The Inspiration</h2>
+
+<p>Daues presented unrelated work at the <a href="https://research.cs.wisc.edu/htcondor/HTCondorWeek2017/" target="_blank">2017 HTCondor Week workshop</a>.  At this workshop, he heard about the work of Phillip Papodopolous at UCSD, and his international Data Placement Lab (iDPL).   iDPL used HTCondor jobs solely for transferring data between international sites.  Daues re-used and adapted some of these ideas for NCSA’s needs.</p>
+
+<h2>The Solution</h2>
+<p>First, Daues installed a <a href="https://hub.docker.com/r/htcondor/mini" target="_blank">“mini-condor”</a>, an HTCondor pool entirely on one machine, with an access point and eight execution slots on that same machine.  Then, given a single large file containing the names of all the files to transfer, he ran the Unix split command to create separate files with either 50 of the larger files, or 200 of the smaller files.  Finally, using the HTCondor submit file command</p>
+
+<p>Queue filename matching files *.txt</p>
+
+<p>the condor_submit command creates one job per split file, which runs the wget2 command and passes the list of filenames to wget2.  The HTCondor access point can handle tens of thousands of idle jobs, and will schedule these jobs on the eight execution slots.  While more slots would yield more overlapped i/o, eight slots were chosen to throttle the total network bandwidth used.  Over the course of days, this machine with eight slots maintained roughly 600 MB/seconds.</p>
+
+<p><em>(Note that the machine running HTCondor did not crash during this run, but if it had, all the jobs, after submission, were stored reliably on the local disk, and at such time as the crashed machine restarted, and the init program restarted the HTCondor system, all interrupted jobs would be restarted, and the process would continue without human intervention.)</em></p>
+
+
+</section>
+
+
+        </main>
+        <footer>
+          <hr/>
+          Funded by the National Science Foundation under Grant Nos. 2030508, 1836650, and 1148698. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+        </footer>
+      </div>
+
+  
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-69012-28', 'auto');
+        ga('send', 'pageview');
+    </script>
+  
+  </body>
+</html>

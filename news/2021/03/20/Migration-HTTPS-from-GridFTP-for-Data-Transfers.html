@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Migration to HTTP from GridFTP for Data Transfers | Open Science Grid</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Migration to HTTP from GridFTP for Data Transfers" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Open Science Grid (OSG) consortium is nearing the completion of migrating its software stack to the WebDAV data transfer protocol - a widely used, industry-compatible and secure protocol. The WebDAV protocol which is an extension of the well-known HTTP allows Third-Party-Copy transfers which are commonly used to move bulk data between storage systems worldwide. Moreover, WebDav is compatible with the OAuth2 mechanism for authentication." />
+<meta property="og:description" content="The Open Science Grid (OSG) consortium is nearing the completion of migrating its software stack to the WebDAV data transfer protocol - a widely used, industry-compatible and secure protocol. The WebDAV protocol which is an extension of the well-known HTTP allows Third-Party-Copy transfers which are commonly used to move bulk data between storage systems worldwide. Moreover, WebDav is compatible with the OAuth2 mechanism for authentication." />
+<meta property="og:site_name" content="Open Science Grid" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-20T12:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Migration to HTTP from GridFTP for Data Transfers" />
+<script type="application/ld+json">
+{"description":"The Open Science Grid (OSG) consortium is nearing the completion of migrating its software stack to the WebDAV data transfer protocol - a widely used, industry-compatible and secure protocol. The WebDAV protocol which is an extension of the well-known HTTP allows Third-Party-Copy transfers which are commonly used to move bulk data between storage systems worldwide. Moreover, WebDav is compatible with the OAuth2 mechanism for authentication.","url":"/news/2021/03/20/Migration-HTTPS-from-GridFTP-for-Data-Transfers.html","@type":"BlogPosting","datePublished":"2021-03-20T12:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"/news/2021/03/20/Migration-HTTPS-from-GridFTP-for-Data-Transfers.html"},"headline":"Migration to HTTP from GridFTP for Data Transfers","dateModified":"2021-03-20T12:00:00+00:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/assets/js/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="/assets/js/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="/assets/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"><img src="/assets/images/osglogo.png" alt="Open Science Grid logo"> Open Science Grid</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  About
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/about/introduction">Introduction</a>
+                  <a class="dropdown-item" href="/about/open_science_pool/">Open Science Pool</a>
+                  <a class="dropdown-item" href="/about/computation/">Computation on the OSG</a>
+                  <a class="dropdown-item" href="/about/organization/">Organization</a>
+                  <a class="dropdown-item" href="/about/team">Team</a>
+                  <a class="dropdown-item" href="/about/publications">Publications</a>
+                </div>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/campus-cyberinfrastructure">CC*</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/news">News</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/contact">Contact</a>
+              </li>
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Docs
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                  <a class="dropdown-item" href="https://support.opensciencegrid.org/support/home">For Users</a>
+                  <a class="dropdown-item" href="https://opensciencegrid.org/docs/">For Sysadmins</a>
+                  <a class="dropdown-item" href="https://opensciencegrid.org/security/">Security</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- End Container -->
+      </nav>
+    </header>
+
+      <div class="container">
+        <main>
+          <section>
+  
+  <div class="title-head">
+    <h1>Migration to HTTP from GridFTP for Data Transfers</h1>
+  
+  </div> <!-- title-head -->
+  
+
+
+  <p>The Open Science Grid (OSG) consortium is nearing the completion of migrating its software stack to the WebDAV data transfer protocol - a widely used, industry-compatible and secure protocol. The WebDAV protocol which is an extension of the well-known HTTP allows Third-Party-Copy transfers which are commonly used to move bulk data between storage systems worldwide. Moreover, WebDav is compatible with the OAuth2 mechanism for authentication.</p>
+
+<p>This migration started in 2017 when the Globus project moved away from releasing and supporting its GridFTP and GSI software under an open-source license. Since that time OSG has been working with the global cyberinfrastructure community <a href="https://opensciencegrid.org/technology/policy/gridftp-gsi-migration/">on plans</a> to migrate the software stack to an open, non-proprietary, protocol for data transfer. In August 2017, the OSG Council approved the adoption of GridFTP and GSI source code support while developing migration plans. Two years later, in August 2019, the migration began with the OSG 3.5 series release, which included HTTPS support via WebDav implemented in the XRootD server. In December 2019, <a href="https://opensciencegrid.org/technology/policy/gridftp-gsi-migration/">detailed documentation</a> was published for its user community. In February 2021, OSG released software series 3.6, without dependencies on either GridFTP or GSI. The end of support for release 3.5 is presently scheduled for February 2022.</p>
+
+<p>For researchers who access the Open Science Pool via the <a href="https://www.osgconnect.net/">OSG Connect access points</a>, this change is transparent and has no impact whatsoever. The environment for transferring data and conducting their research will not change.</p>
+
+<p>Similarly, most campuses that use the OSG services will also be unaffected. Campuses that do use GridFTP today can migrate now, as OSG 3.5 includes the HTTPS solution in addition to the legacy GridFTP. If a site has a GridFTP server, the campus can add the HTTPS service on the same hardware, and decommission GridFTP when no longer in use, all within the same OSG 3.5 release.</p>
+
+<p>Notice that GridFTP and WebDAV are not compatible, and consequently, there will be a period during which campuses may be required to support both protocols until all of their science communities have transitioned.</p>
+
+<p>The OSG consortium validated that the migration to HTTPS would not have a negative impact on data transfer performance, an important consideration given the volume of data transfers supported by the OSG. A paper that compares GridFTP and HTTPS in their respective third-party copy mode was recently submitted for publication. It reports up to 30% better performance for the HTTPS implementation than the GridFTP implementation.</p>
+
+<p>Individuals interested in more details on how a large community executes this transition can find more information in the <a href="https://opensciencegrid.org/technology/policy/gridftp-gsi-migration/">frequently asked questions and documentation</a> for the  <a href="https://wlcg.web.cern.ch/">Worldwide LHC Computing Grid</a> (WLCG) and US-LHC. In addition, Diego Davila, OSG senior developer, reported at the 2021 OSG All-Hands Meeting on <a href="https://indico.fnal.gov/event/47040/contributions/208459/">“HTTP Third-Party Copy: Getting rid of GridFTP.”</a> Davila discussed the Compact Muon Solenoid (CMS) migration steps to WebDAV. Both <a href="https://atlas.cern/">ATLAS</a> and <a href="https://home.cern/science/experiments/cms">CMS</a> are hoping to complete their global transition to HTPPS by June 2021.</p>
+
+
+</section>
+
+
+        </main>
+        <footer>
+          <hr/>
+          Funded by the National Science Foundation under Grant Nos. 2030508, 1836650, and 1148698. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+        </footer>
+      </div>
+
+  
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-69012-28', 'auto');
+        ga('send', 'pageview');
+    </script>
+  
+  </body>
+</html>
